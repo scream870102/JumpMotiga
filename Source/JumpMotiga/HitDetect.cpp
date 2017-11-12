@@ -37,7 +37,11 @@ void UHitDetect::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UP
 {
 	if (OtherActor)
 		UE_LOG(LogTemp, Warning, TEXT("Hit by %s"), *OtherActor->GetName());
-	
+	if (OtherActor->ActorHasTag(FName("DieSign"))) {
+		UE_LOG(LogTemp, Warning, TEXT("Hit by %s and will die"), *OtherActor->GetName());
+		Owner->EndPlay(Test);
+	}
+		
 }
 
 void UHitDetect::FindCapsuleComponents() {
@@ -49,3 +53,5 @@ void UHitDetect::FindCapsuleComponents() {
 	if (CollisionComponent)
 		UE_LOG(LogTemp, Error, TEXT("%s find the CapsuleComponent"), *GetOwner()->GetName());
 }
+
+

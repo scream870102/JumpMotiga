@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Engine/EngineTypes.h"
 #include "HitDetect.generated.h"
 
 
@@ -21,6 +22,7 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	AActor* Owner = GetOwner();
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -29,6 +31,6 @@ private:
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 	UCapsuleComponent *CollisionComponent;
 	void FindCapsuleComponents();
-		
+	EEndPlayReason::Type Test ;
 	
 };

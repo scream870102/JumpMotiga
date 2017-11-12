@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Engine/EngineTypes.h"
+#include "GameFramework/PlayerController.h"
 #include "JumpMotigaCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -42,4 +44,8 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+	/////////////////////////////////////////////////////
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	APlayerController* pc = nullptr;
 };

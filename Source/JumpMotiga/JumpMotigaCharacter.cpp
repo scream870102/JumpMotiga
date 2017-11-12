@@ -45,6 +45,7 @@ AJumpMotigaCharacter::AJumpMotigaCharacter()
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
 
+
 //////////////////////////////////////////////////////////////////////////
 // Input
 
@@ -74,5 +75,12 @@ void AJumpMotigaCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, con
 void AJumpMotigaCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	StopJumping();
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+void AJumpMotigaCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	UE_LOG(LogTemp,Error, TEXT("Game End"));
+	Super::Destroy();
 }
 
