@@ -24,13 +24,8 @@ void AObstacleController::BeginPlay()
 void AObstacleController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//UpdateObstacleNum();
-	// && currentObstracleNum <= MaxObstacleNum
 	if (bCanGenerateObstacle)
-	{
 		SpawnObstacle();
-		//UpdateObstacleNum();
-	}
 }
 
 
@@ -46,7 +41,6 @@ void AObstacleController::SpawnObstacle()
 	bCanGenerateObstacle = false;
 
 	//Spawn The Obstacle
-	UE_LOG(LogTemp, Warning, TEXT("Actor is being spawned"));
 	FVector Location(1207.272f, -2000.0f, 204.6241f);
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
@@ -54,9 +48,4 @@ void AObstacleController::SpawnObstacle()
 
 	//Set the Timer And Update the boolean after SpawnFrequency
 	GetWorld()->GetTimerManager().SetTimer(GenerateObstacleTimerHandle, this, &AObstacleController::UpdateTimer, SpawnFrequency, false);
-}
-
-void AObstacleController::UpdateObstacleNum()
-{
-	//Update the Num try to get the Obstacle in the level
 }

@@ -8,6 +8,11 @@
 #include "Components/SphereComponent.h"
 #include "ConstructorHelpers.h"
 #include "Math/UnrealMathUtility.h"
+#include "HItDetectForObstacle.h"
+#include "Engine/EngineTypes.h"
+#include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
+#include "TimerManager.h"
 #include "Obstacle.generated.h"
 
 UCLASS()
@@ -27,8 +32,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	//HitDetectComponet make it can detect hit
-
+private:
 	//SphereComponent make it can work in physic world
 	USphereComponent* SphereComponent;
 
@@ -39,7 +43,7 @@ public:
 	TArray<FName>Tags;
 
 	//EndPlay Function will be call if hit the edge
-	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	void EndPlay(const EEndPlayReason::Type EndPlayReason);
 
 	//Init ShpereComponet
 	void AddSphereCompont();
@@ -52,4 +56,13 @@ public:
 
 	//How Obstacle Move in Every frame
 	float YSpeed=2.0f;
+
+	//Handles the delay between the Obstacle Generate
+	FTimerHandle ObstacleTimerHandle;
+
+	//Make Timer call Endplay throgh this function
+	void deleteSelf();
+
+	//EndPlayReason
+	EEndPlayReason::Type EndPlayReason;
 };

@@ -16,8 +16,14 @@ AObstacle::AObstacle()
 void AObstacle::BeginPlay()
 {
 	Super::BeginPlay();
+
 	//Init YSpeed
 	YSpeed = FMath::RandRange(2.0f, 10.0f);
+
+	//SetTimer To call the EndPlay Function
+	GetWorld()->GetTimerManager().SetTimer(ObstacleTimerHandle,this,&AObstacle::deleteSelf, 10.0f, false);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s spawn"), *GetName());
 	
 }
 
@@ -29,12 +35,15 @@ void AObstacle::Tick(float DeltaTime)
 	athlectics(DeltaTime);
 }
 
+//EndPlay function
 void AObstacle::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	UE_LOG(LogTemp, Error, TEXT("Game End"));
-	Super::Destroy();
+	UE_LOG(LogTemp, Error, TEXT("%s destroyed"),*GetName());
+	Destroy();
 }
 
+
+//Add Sphere make Obstacle can react physic
 void AObstacle::AddSphereCompont()
 {
 	// Our root component will be a sphere that reacts to physics
@@ -67,10 +76,20 @@ void AObstacle::AddStaticMeshComponet()
 	}
 }
 
+//Set how Obstacle will move
 void AObstacle::athlectics(float DeltaTime)
 {
 	FVector InitLocation=GetActorLocation();
 	FVector NewLocation = InitLocation + FVector(0.0f, YSpeed, 0.0f);
 	SetActorLocation(NewLocation);
 }
+
+//Make Timer can call EndPlay function
+void AObstacle::deleteSelf()
+{
+	EndPlay(EndPlayReason);
+}
+
+
+
 

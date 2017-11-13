@@ -39,9 +39,9 @@ void UHitDetect::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UP
 {
 	//Get hitting actor name
 	if (OtherActor)
-		UE_LOG(LogTemp, Warning, TEXT("Hit by %s"), *OtherActor->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("Hit by %s"), *OtherActor->GetName());
 	if (OtherComponent)
-		UE_LOG(LogTemp, Warning, TEXT("Hit by %s"), *OtherComponent->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("Hit by %s"), *OtherComponent->GetName());
 
 	//Check if hit Obstacle hit it then endplay
 	if (OtherComponent->ComponentHasTag(FName("DieSign"))) {
