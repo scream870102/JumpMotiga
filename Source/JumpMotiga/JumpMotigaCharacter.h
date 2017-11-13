@@ -46,6 +46,4 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/////////////////////////////////////////////////////
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
-
-	APlayerController* pc = nullptr;
 };

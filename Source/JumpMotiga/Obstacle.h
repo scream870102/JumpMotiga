@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/SphereComponent.h"
+#include "ConstructorHelpers.h"
+#include "Math/UnrealMathUtility.h"
 #include "Obstacle.generated.h"
 
 UCLASS()
@@ -23,6 +27,29 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	
-	
+	//HitDetectComponet make it can detect hit
+
+	//SphereComponent make it can work in physic world
+	USphereComponent* SphereComponent;
+
+	//MeshComponent make obstacle visible
+	UStaticMeshComponent* SphereVisual;
+
+	//Tags to add to the componet
+	TArray<FName>Tags;
+
+	//EndPlay Function will be call if hit the edge
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+	//Init ShpereComponet
+	void AddSphereCompont();
+
+	//Init StaticMeshComponent
+	void AddStaticMeshComponet();
+
+	//define what the obstacle will do when spawned
+	void athlectics(float DeltaTime);
+
+	//How Obstacle Move in Every frame
+	float YSpeed=2.0f;
 };

@@ -27,10 +27,17 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 private:
+	//OnHit will be call if the  CollisionComponent be hit
 	UFUNCTION()
 		void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	//Component to detect the hit
 	UCapsuleComponent *CollisionComponent;
+
+	//Init CapsuleCimponents
 	void FindCapsuleComponents();
-	EEndPlayReason::Type Test ;
+
+	//EndPlayReason
+	EEndPlayReason::Type EndPlayReason ;
 	
 };
