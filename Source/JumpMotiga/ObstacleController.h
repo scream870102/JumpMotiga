@@ -39,6 +39,14 @@ protected:
 	//It will spawn obstacle and set bCanGenerateObstacle false after SpawnFrequnecy call UpdateTimer
 	void SpawnObstacle();
 
+	//Get the Obstacle_BP Parent Class AObstacle
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AObstacle> ToSpawn;
+
+	//static ConstructorHelpers::FObjectFinder<UClass> FObjectFinder(TEXT("/Game/Obstacle_BP.Obstacle_BP_C"));
+	
+	//Obstacle = ObstacleFinder.Object;
+
 
 public:	
 	// Called every frame

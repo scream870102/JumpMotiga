@@ -44,7 +44,14 @@ void AObstacleController::SpawnObstacle()
 	FVector Location(1207.272f, -2000.0f, 204.6241f);
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
-	GetWorld()->SpawnActor<AObstacle>(Location, Rotation, SpawnInfo);
+	/////////////////////////////////////////////////
+	if (ToSpawn) {
+		SpawnInfo.Owner = this;
+		GetWorld()->SpawnActor<AObstacle>(ToSpawn, Location, Rotation, SpawnInfo);
+	}
+	else
+		UE_LOG(LogTemp, Error, TEXT("The Spawner not loading right"));
+	//GetWorld()->SpawnActor<AObstacle>(Location, Rotation, SpawnInfo);
 
 	//Set the Timer And Update the boolean after SpawnFrequency
 	GetWorld()->GetTimerManager().SetTimer(GenerateObstacleTimerHandle, this, &AObstacleController::UpdateTimer, SpawnFrequency, false);

@@ -8,7 +8,6 @@
 #include "Components/SphereComponent.h"
 #include "ConstructorHelpers.h"
 #include "Math/UnrealMathUtility.h"
-#include "HItDetectForObstacle.h"
 #include "Engine/EngineTypes.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
