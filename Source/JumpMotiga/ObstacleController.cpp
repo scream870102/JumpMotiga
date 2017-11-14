@@ -41,13 +41,13 @@ void AObstacleController::SpawnObstacle()
 	bCanGenerateObstacle = false;
 
 	//Spawn The Obstacle
-	FVector Location(1207.272f, -2000.0f, 204.6241f);
+	
 	FRotator Rotation(0.0f, 0.0f, 0.0f);
 	FActorSpawnParameters SpawnInfo;
 	/////////////////////////////////////////////////
 	if (ToSpawn) {
 		SpawnInfo.Owner = this;
-		GetWorld()->SpawnActor<AObstacle>(ToSpawn, Location, Rotation, SpawnInfo);
+		GetWorld()->SpawnActor<AObstacle>(ToSpawn, SpawnLocation, Rotation, SpawnInfo);
 	}
 	else
 		UE_LOG(LogTemp, Error, TEXT("The Spawner not loading right"));

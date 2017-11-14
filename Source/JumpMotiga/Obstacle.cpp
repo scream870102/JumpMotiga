@@ -18,7 +18,7 @@ void AObstacle::BeginPlay()
 	Super::BeginPlay();
 
 	//Init YSpeed
-	YSpeed = FMath::RandRange(2.0f, 10.0f);
+	YSpeed = FMath::RandRange(YSpeedMIn, YSpeedMax);
 
 	//SetTimer To call the EndPlay Function
 	GetWorld()->GetTimerManager().SetTimer(ObstacleTimerHandle,this,&AObstacle::deleteSelf, 10.0f, false);

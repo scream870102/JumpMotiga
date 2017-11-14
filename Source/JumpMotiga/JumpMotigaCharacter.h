@@ -44,6 +44,7 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/////////////////////////////////////////////////////
+	///////////////////////////////////////Self_Add///////////////////////////////////////
+	//EndPlayFunction
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };

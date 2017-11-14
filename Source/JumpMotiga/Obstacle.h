@@ -31,6 +31,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	//How Obstacle Move in Every frame
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float YSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float YSpeedMax = 2.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float YSpeedMIn = 2.0f;
+
 private:
 	//SphereComponent make it can work in physic world
 	USphereComponent* SphereComponent;
@@ -52,9 +60,6 @@ private:
 
 	//define what the obstacle will do when spawned
 	void athlectics(float DeltaTime);
-
-	//How Obstacle Move in Every frame
-	float YSpeed=2.0f;
 
 	//Handles the delay between the Obstacle Generate
 	FTimerHandle ObstacleTimerHandle;

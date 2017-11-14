@@ -43,9 +43,8 @@ protected:
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<AObstacle> ToSpawn;
 
-	//static ConstructorHelpers::FObjectFinder<UClass> FObjectFinder(TEXT("/Game/Obstacle_BP.Obstacle_BP_C"));
-	
-	//Obstacle = ObstacleFinder.Object;
+	UPROPERTY(EditAnywhere)
+		FVector SpawnLocation=FVector(1207.272f, -2000.0f, 204.6241f);
 
 
 public:	
